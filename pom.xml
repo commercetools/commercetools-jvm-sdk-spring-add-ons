@@ -4,7 +4,7 @@
 
     <groupId>com.commercetools.sdk.jvm.spring</groupId>
     <artifactId>commercetools-spring-batch-add-ons</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>commercetools-jvm-sdk-spring-add-ons</name>
