@@ -1,7 +1,7 @@
 # commercetools-jvm-sdk-spring-add-ons
 tools to use the commercetools JVM SDK and Spring Batch/DI/MVC
 
-![][travis img]][travis]
+[![][travis img]][travis]
 [![][maven img]][maven]
 [![][license img]][license]
 
