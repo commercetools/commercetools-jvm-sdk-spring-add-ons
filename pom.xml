@@ -4,7 +4,7 @@
 
     <groupId>com.commercetools.sdk.jvm.spring</groupId>
     <artifactId>commercetools-spring-batch-add-ons</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <name>commercetools-jvm-sdk-spring-add-ons</name>
@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <jvm.sdk.version>1.0.0-M26</jvm.sdk.version>
-        <spring.batch.version>2.0.4.RELEASE</spring.batch.version>
+        <spring.batch.version>3.0.6.RELEASE</spring.batch.version>
     </properties>
 
     <licenses>
@@ -30,7 +30,7 @@
         <developerConnection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</developerConnection>
         <url>git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</url>
         <connection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</connection>
-        <tag>commercetools-spring-batch-add-ons-0.1.1</tag>
+        <tag>commercetools-spring-batch-add-ons-0.2.0</tag>
     </scm>
     <developers>
         <developer>
@@ -53,7 +53,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch</artifactId>
+            <artifactId>spring-batch-core</artifactId>
             <version>${spring.batch.version}</version>
         </dependency>
         <dependency>
