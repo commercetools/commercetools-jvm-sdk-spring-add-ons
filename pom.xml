@@ -10,6 +10,7 @@
 
     <name>commercetools-jvm-sdk-spring-add-ons</name>
     <description>tools usable with spring</description>
+    <url>http://dev.commercetools.com</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,6 +24,38 @@
         <java.version>1.8</java.version>
         <jvm.sdk.version>1.0.0-M26</jvm.sdk.version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <developerConnection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</developerConnection>
+        <url>git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</url>
+        <connection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <id>michael</id>
+            <name>Michael Schleichardt</name>
+            <url>https://github.com/schleichardt</url>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -97,8 +130,109 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <taglets>
+                        <taglet>
+                            <tagletClass>com.commercetools.build.taglets.FileIncludeTaglet</tagletClass>
+                            <tagletArtifact>
+                                <groupId>com.commercetools.build.taglets</groupId>
+                                <artifactId>commercetools-taglets</artifactId>
+                                <version>0.6.2</version>
+                            </tagletArtifact>
+                        </taglet>
+                    </taglets>
+                    <bottom><![CDATA[<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js'></script><script>hljs.initHighlightingOnLoad();</script>]]></bottom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy scm-publish:publish-scm</goals>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <!--
+                        idea source: http://blog.progs.be/517/publishing-javadoc-to-github-using-maven
 
+                        https://maven.apache.org/plugins/maven-scm-publish-plugin/
+
+                        mvn clean javadoc:javadoc scm-publish:publish-scm
+                        -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-publish-plugin</artifactId>
+                        <version>1.1</version>
+                        <configuration>
+                            <checkoutDirectory>${project.build.directory}/javadoc-stage</checkoutDirectory>
+                            <checkinComment>publishing Javadoc for ${project.artifactId}:${project.version}</checkinComment>
+                            <content>${project.build.directory}/apidocs</content>
+                            <skipDeletedFiles>true</skipDeletedFiles>
+                            <pubScmUrl>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</pubScmUrl>
+                            <scmBranch>gh-pages</scmBranch>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
