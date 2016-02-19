@@ -14,7 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <jvm.sdk.version>1.0.0-M26</jvm.sdk.version>
+        <jvm.sdk.version>1.0.0-RC1</jvm.sdk.version>
         <spring.batch.version>3.0.6.RELEASE</spring.batch.version>
     </properties>
 
@@ -57,19 +57,19 @@
             <version>${spring.batch.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.sphere.sdk.jvm</groupId>
-            <artifactId>sphere-models</artifactId>
+            <groupId>com.commercetools.sdk.jvm.core</groupId>
+            <artifactId>commercetools-models</artifactId>
             <version>${jvm.sdk.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.sphere.sdk.jvm</groupId>
-            <artifactId>sphere-java-client-core</artifactId>
+            <groupId>com.commercetools.sdk.jvm.core</groupId>
+            <artifactId>commercetools-java-client-core</artifactId>
             <version>${jvm.sdk.version}</version>
         </dependency>
         <dependency>
             <!-- important that this is in the test scope -->
-            <groupId>io.sphere.sdk.jvm</groupId>
-            <artifactId>sphere-java-client</artifactId>
+            <groupId>com.commercetools.sdk.jvm.core</groupId>
+            <artifactId>commercetools-java-client</artifactId>
             <version>${jvm.sdk.version}</version>
             <scope>test</scope>
         </dependency>
