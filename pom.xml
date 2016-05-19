@@ -27,9 +27,9 @@
     </licenses>
 
     <scm>
-        <developerConnection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</developerConnection>
-        <url>git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</url>
-        <connection>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</connection>
+        <developerConnection>scm:git:git@github.com:commercetools/commercetools-jvm-sdk-spring-add-ons.git</developerConnection>
+        <url>git@github.com:commercetools/commercetools-jvm-sdk-spring-add-ons.git</url>
+        <connection>scm:git:git@github.com:commercetools/commercetools-jvm-sdk-spring-add-ons.git</connection>
         <tag>commercetools-spring-batch-add-ons-0.1.1</tag>
     </scm>
     <developers>
@@ -211,7 +211,7 @@
                             <checkinComment>publishing Javadoc for ${project.artifactId}:${project.version}</checkinComment>
                             <content>${project.build.directory}/apidocs</content>
                             <skipDeletedFiles>true</skipDeletedFiles>
-                            <pubScmUrl>scm:git:git@github.com:sphereio/commercetools-jvm-sdk-spring-add-ons.git</pubScmUrl>
+                            <pubScmUrl>scm:git:git@github.com:commercetools/commercetools-jvm-sdk-spring-add-ons.git</pubScmUrl>
                             <scmBranch>gh-pages</scmBranch>
                         </configuration>
                     </plugin>
